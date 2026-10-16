@@ -31,13 +31,8 @@ import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
 
 
 // ─── LoginScreen ─────────────────────────────────────────────────────────────
-@Preview(
-    name = "Netflix Login Screen",
-    showBackground = true,
-    showSystemUi = true
-)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onClickInicioSesion: () -> Unit, onClickRegister: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -129,7 +124,7 @@ fun LoginScreen() {
 
                 // ── Sign in button ───────────────────────────────────────────
                 Button(
-                    onClick = { },
+                    onClick = {onClickInicioSesion () },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
@@ -245,7 +240,7 @@ fun LoginScreen() {
                         color = NetflixWhite,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Medium,
-                        modifier = Modifier.clickable { }
+                        modifier = Modifier.clickable { onClickRegister() }
                     )
                 }
             }
